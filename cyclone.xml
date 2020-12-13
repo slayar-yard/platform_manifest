@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+
+  <remote  name="github"
+           fetch="https://github.com" />
+
+  <remote  name="cyclone"
+            fetch="https://github.com/Project-Cyclone"
+            revision="r" />
+
+<!-- General -->
+  <project path="manifest" name="platform_manifest" remote="cyclone" />
+  <project path="bionic" name="platform_bionic" remote="cyclone" />
+  <project path="bootable/recovery" name="platform_bootable_recovery" remote="cyclone" />
+
+  <!-- Build -->
+  <project path="build/make" name="platform_build" remote="cyclone">
+    <copyfile src="core/root.mk" dest="Makefile" />
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/soong" name="platform_build_soong" remote="cyclone">
+    <linkfile src="root.bp" dest="Android.bp" />
+    <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
+  </project>
+
+  <!-- Device -->
+  <project path="device/cyclone/sepolicy" name="platform_device_cyclone_sepolicy" remote="cyclone" />
+  <project path="device/qcom/sepolicy" name="platform_device_qcom_sepolicy" remote="cyclone" />
+  <project path="device/qcom/sepolicy_vndr" name="platform_device_qcom_sepolicy_vndr" remote="cyclone" />
+
+  <!-- External -->
+  <project path="external/tinycompress" name="platform_external_tinycompress" remote="cyclone" />
+
+  <!-- Hardware -->
+  <project path="hardware/interfaces" name="platform_hardware_interfaces" remote="cyclone" />
+  <project path="hardware/cyclone/interfaces" name="platform_hardware_cyclone_interfaces" remote="cyclone" />
+
+  <!-- Framework -->
+  <project path="frameworks/av" name="platform_frameworks_av" remote="cyclone" />
+  <project path="frameworks/base" name="platform_frameworks_base" remote="cyclone" />
+  <project path="frameworks/native" name="platform_frameworks_native" remote="cyclone" />
+
+  <!-- Prebuilts -->
+  <project path="prebuilts/tools-cyclone" name="platform_prebuilts_tools-cyclone" remote="cyclone" clone-depth="1" />
+
+  <!-- Packages repos -->
+  <project path="packages/apps/Launcher3" name="platform_packages_apps_Launcher3" remote="cyclone" />
+  <project path="packages/apps/Settings" name="platform_packages_apps_Settings" remote="cyclone" />
+  <project path="packages/apps/ThemePicker" name="platform_packages_apps_ThemePicker" remote="cyclone" />
+
+
+  <!-- System -->
+  <project path="system/core" name="platform_system_core" remote="cyclone" />
+
+  <!-- Vendor -->
+  <project path="vendor/cyclone" name="platform_vendor_cyclone" remote="cyclone" />
+
+</manifest>
